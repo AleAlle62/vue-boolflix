@@ -1,31 +1,19 @@
 <template>
     <div class="containerdue">
-        <div v-for = "objMovie in arrMovie" :key = "objMovie.id">
-            <!-- stampa delle varie del film -->
-            <!-- immagine  -->
-            <div><img :src = "`https://image.tmdb.org/t/p/w342${objMovie.poster_path}`"></div>
-            <!-- titolo  -->
-            <div>{{ objMovie.title }}</div>
-            <!-- ittolo originale  -->
-            <div>{{ objMovie.original_title }}</div>
-            <!-- lingua con bandiera  -->
-            <lang-flag :iso="objMovie.original_language"/>
-            <!-- voto  -->
-            <div>{{ objMovie.vote_average }}</div>
-        </div>
+        <FilmCard/>
     </div>
 </template>
 
 <script>
-import LangFlag from 'vue-lang-code-flags';
+import FilmCard from '@/components/FilmCard.vue';
 
 export default {
-    name: 'MainPage',
-    props : {
-        arrMovie: Array, 
+    name: "MainPage",
+    components: { 
+        FilmCard 
     },
-    components: {
-        LangFlag,
+    props: {
+
     },
 }
 </script>
