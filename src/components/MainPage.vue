@@ -1,31 +1,33 @@
 <template>
-    <div class="containerdue">
-        <FilmCard/>
+    <div >
+        <!-- film  -->
+        <div class="containerdue">
+            <h1>FILM</h1>
+            <FilmCard :arr-movie = " arrMovie "/>
+            <h1>SERIE</h1>
+            <SerieCard/>
+        </div>
     </div>
 </template>
 
 <script>
 import FilmCard from '@/components/FilmCard.vue';
+import SerieCard from '@/components/SerieCard.vue';
 
 export default {
     name: "MainPage",
     components: { 
-        FilmCard 
+        FilmCard,
+        SerieCard,
     },
     props: {
-
+        arrMovie: Array,
     },
 }
 </script>
 
 <style>
-.containerdue {
-    padding: 30px;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
+
 img {
     height: 200px;
 }

@@ -23,8 +23,8 @@ import LangFlag from 'vue-lang-code-flags';
 
 export default {
     name: 'FilmCard',
-    props: {
-        arrMovie: Array,
+    props : {
+        arrMovie: Array, 
     },
     components: {
         LangFlag,
@@ -33,5 +33,12 @@ export default {
 </script>
 
 <style>
-
+.container {
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 20px;
+}
 </style>
