@@ -28,14 +28,15 @@ export default {
         apiKey: '07f8adb8a80647ce73267621c81dedf5',
         resultsLanguage: ' it-IT ',
         arrMovie: [],
+        arrSerie: [],
       } 
     },
     methods: {
-      //richiesta alla API
+      //richiesta alla API dei FILM
       search(queryString){
         // chiamata axios all'url
         // base + end point + query string 
-        axios.get(`${this.baseApi}` + '/search/movie', {
+        axios.get(`${this.baseApi}` + '/search/movie' , {
           // parametri delle variabili per le richieste dell'URL
           params: {
             api_key: this.apiKey,
@@ -48,7 +49,25 @@ export default {
           this.arrMovie = responseAxios.data.results;
           console.log(this.arrMovie)
         });
+
+
+        // richiesta all'API richiesta delle SERIE TV
+        axios.get(`${this.baseApi}` + '/search/tv' , {
+          // parametri delle variabili per le richieste dell'URL
+          params: {
+            api_key: this.apiKey,
+            query: queryString,
+            language: this.resultsLanguage,
+          }
+        })
+        // risposta di axios
+        .then(responseAxios => {
+          this.arrSerie = responseAxios.data.results;
+          console.log(this.arrSerie + 'ciao')
+        });
       }
+
+
     }
 }
 </script>
