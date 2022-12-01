@@ -1,14 +1,13 @@
 <template>
     <div>
       <!-- header  -->
-      <HeaderPage/>
+      <HeaderPage @queryChange = " search "/>
       <!-- main -->
-      <MainPage/>
+      <MainPage :arr-movie = " arrMovie "/>
     </div>
 </template>
 
 <script>
-
 // axios 
 import axios from 'axios';
 // header 
@@ -17,49 +16,50 @@ import HeaderPage from '@/components/HeaderPage.vue';
 import MainPage from '@/components/MainPage.vue';
 
 export default {
+    name: 'App',
   // componenti header e main 
     components: { 
       HeaderPage,
       MainPage,
     },
-    // dati 
-    data() {
-      return {
-        // array dei film 
-        arrayFilm: null,
-        // link della mia chiave apy 
-        urlApi: 'https://api.themoviedb.org/3/search/movie?api_key=2e41251ba6af8c59827f3c648b26408b&query=string',
-      }
+    data (){
+      return{
+        baseApi: 'https://api.themoviedb.org/3',
+        apiKey: '07f8adb8a80647ce73267621c81dedf5',
+        resultsLanguage: ' it-IT ',
+        arrMovie: [],
+      } 
     },
-    // axios
-    created() {
-
-      axios.get(this.urlApi)
-      .then((axiosResponse) => {
-        console.log(axiosResponse);
-        this.arrayFilm = axiosResponse.data.results;
-      });
-
-
-
-      // variabile che incolla scritta dalla ricerca
-      // let searchStr = '';
-      // axios.get `https://api.themoviedb.org/3/movie/550?api_key=07f8adb8a80647ce73267621c81dedf5&query=${searchStr}`
-    
-    
-      // axios.get ('https://api.themoviedb.org/3/movie', {
-      //   params: {
-      //     // chiave della mia api 
-      //     api_key: '07f8adb8a80647ce73267621c81dedf5',
-      //     query: searchStr,
-      //   }
-      // })
-
-  },
+    methods: {
+      //richiesta alla API
+      search(queryString){
+        // chiamata axios all'url
+        // base + end point + query string 
+        axios.get(`${this.baseApi}` + '/search/movie', {
+          // parametri delle variabili per le richieste dell'URL
+          params: {
+            api_key: this.apiKey,
+            query: queryString,
+            language: this.resultsLanguage,
+          }
+        })
+        // risposta di axios
+        .then(responseAxios => {
+          this.arrMovie = responseAxios.data.results;
+          console.log(this.arrMovie)
+        });
+      }
+    }
 }
 </script>
 
 <!-- scss  -->
-<style lang="scss" scoped>
+<style>
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 </style>

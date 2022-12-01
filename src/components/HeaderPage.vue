@@ -3,12 +3,13 @@
     <div class="containeruno">
         <!-- scirtta bool  -->
         <div class="titolo">BOOLFLIX</div>
-        <div>
+        <!-- per non refreshare la pagina  -->
+        <form @submit.prevent = " $emit('queryChange', queryString) ">
             <!-- barra di ricerca  -->
-            <input type="text" placeholder="cerca..." @keyup.enter = " search ">
+            <input type="text" placeholder="cerca..." v-model="queryString">
             <!-- bottone di invio  -->
             <button>cerca</button>
-        </div>
+        </form>
     </div>
 </template>
 
@@ -16,11 +17,11 @@
 export default {
     name: 'HeaderPage',
     // creazione funzione che ricerca il nome nella API 
-    methods: {
-        search(){
-            
+    data(){
+        return{
+            queryString: '',
         }
-    }
+    },
 }
 </script>
 
