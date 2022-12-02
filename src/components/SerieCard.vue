@@ -1,12 +1,14 @@
 <template>
     <div class="container">
-        <div class="card" v-for = "objSerie in arrSerie" :key = "objSerie.id">
+        <div class="card" 
+        v-for = "objSerie in arrSerie" :key = "objSerie.id"
+        v-show = " objSerie.poster_path ">
             <!-- stampa delle varie del film -->
 
 
             <!-- DAVANTI  -->
             <div class="back">
-                <div><img :src = "`https://image.tmdb.org/t/p/w342${objSerie.poster_path}`"></div>
+                <div><img  :src = "`https://image.tmdb.org/t/p/w342${objSerie.poster_path}`"></div>
             </div>
 
             <!-- DIETRO  -->
@@ -19,6 +21,9 @@
                 <lang-flag :iso="objSerie.original_language"/>
                 <!-- voto  -->
                 <div>{{ converteScore(objSerie.vote_average) }}</div>
+                <div class="view">{{ objSerie.overview }}</div>
+                <!-- <font-awesome-icon icon="fa-solid fa-star" /> -->
+                <!-- <font-awesome-icon icon="fa-solid fa-star" /> -->
             </div>
 
 
@@ -40,6 +45,7 @@ export default {
         LangFlag,
     },
     methods: {
+        // trasformazione dei voti da 10 a 5
         converteScore(score){
             // score : 10 = x : 5
             // x = (score x 5)/10
@@ -53,18 +59,15 @@ export default {
 
 <style>
 .container {
-    padding: 30px;
-    height: 100%;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    gap: 20px;
+    gap: 100px;
 }
 
 .card {
     perspective: 1000px;
     height: 220px;
-    width: 120px;
+    width: 220px;
     position: relative;
 }
 
@@ -92,4 +95,7 @@ export default {
     cursor: pointer;
 }
 
+.view {
+    height: 20px;
+}
 </style>

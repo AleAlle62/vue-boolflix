@@ -1,11 +1,14 @@
 import Vue from 'vue'
-import App from './App.vue'
-import LangFlag from 'vue-lang-code-flags';
-import { library } from '@fortawesome/fontawesome-svg-core'; // libreria icone del progetto
-import { faChevronRight, faHatWizard } from '@fortawesome/free-solid-svg-icons'; // importiamo le icone che ci servono
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'; // importazione del componente FontAwesomeIcon
 
-library.add(faChevronRight, faHatWizard); 
+import LangFlag from 'vue-lang-code-flags';
+import { library } from '@fortawesome/fontawesome-svg-core'; 
+import { faStar } from '@fortawesome/free-solid-svg-icons'; 
+import { faStara as faRegularStar } from '@fortawesome/free-regular-svg-icons'; 
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'; 
+
+import App from './App.vue'
+
+library.add(faStar, faRegularStar); 
 Vue.component('FontAwesomeIcon', FontAwesomeIcon); 
 
 Vue.config.productionTip = false
