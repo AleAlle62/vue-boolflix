@@ -11,7 +11,7 @@
             <!-- lingua con bandiera  -->
             <lang-flag :iso="objMovie.original_language"/>
             <!-- voto  -->
-            <div>{{ objMovie.vote_average }}</div>
+            <div>{{ converteScore(objMovie.vote_average) }}</div>
         </div>
     </div>
 </template>
@@ -29,6 +29,15 @@ export default {
     components: {
         LangFlag,
     },
+    methods: {
+        converteScore(score){
+            // score : 10 = x : 5
+            // x = (score x 5)/10
+            // x = score x 0,5
+            // x = score / 2
+            return Math.ceil(score / 2) 
+        }
+    }
 }
 </script>
 

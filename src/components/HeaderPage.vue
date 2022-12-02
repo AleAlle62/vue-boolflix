@@ -32,6 +32,7 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    border: 1px solid white;
 }
 .titolo {
     color: red;

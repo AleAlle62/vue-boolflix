@@ -1,11 +1,13 @@
 <template>
     <div >
-        <!-- film  -->
         <div class="containerdue">
+            <!-- serie  -->
+            <h1>SERIE TV</h1>
+            <SerieCard 
+            :arr-serie =  " arrSerie "/>
+            <!-- film  -->
             <h1>FILM</h1>
             <FilmCard :arr-movie = " arrMovie "/>
-            <h1>SERIE</h1>
-            <SerieCard/>
         </div>
     </div>
 </template>
@@ -22,13 +24,24 @@ export default {
     },
     props: {
         arrMovie: Array,
+        arrSerie: Array,
     },
 }
 </script>
 
 <style>
 
+.container {
+    display: flex;
+    color: white;
+}
+
 img {
-    height: 200px;
+    height: 300px;
+    border-radius: 10px;
+}
+h1 {
+    margin: 1em;
+    color: white;
 }
 </style>

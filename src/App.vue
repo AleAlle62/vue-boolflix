@@ -3,7 +3,9 @@
       <!-- header  -->
       <HeaderPage @queryChange = " search "/>
       <!-- main -->
-      <MainPage :arr-movie = " arrMovie "/>
+      <MainPage 
+      :arr-movie = " arrMovie "
+      :arr-serie = " arrSerie "/>
     </div>
 </template>
 
@@ -74,6 +76,10 @@ export default {
 
 <!-- scss  -->
 <style>
+
+html {
+  background-color: black;
+}
 
 body {
   margin: 0;
