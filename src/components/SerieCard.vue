@@ -21,22 +21,22 @@
                 <!-- voto  -->
                 <div class="" >
                     <!-- <div class="descrizione">VOTO:</div> -->
-
+                    <div>{{objSerie.vote_average}}</div>
                     <!-- stelline  -->
                     <font-awesome-icon
                     icon="fa-solid fa-star" 
                     v-for= "i in score" 
                     :key="i"
-                    :style= "{ color: 'yellow'} "/>
+                    />
 
+                    <!-- v-for= "i in (score.maxScore - score.score)"  -->
 
                     <!-- stelline vuote  -->
-                    <font-awesome-icon 
+                    <!-- <font-awesome-icon 
                     icon="fa-regular fa-star "
-                    v-for= "i in maxScore" 
-                    :key="i" 
+
                     :style= "{ color: 'yellow'} " />
-                    <div>{{' su 5'}}</div>
+                    <div>{{' su 5'}}</div> -->
                 </div>
 
                 <div class="flex">
@@ -57,15 +57,14 @@ export default {
     name: 'SerieCard',
     props : {
         arrSerie: Array,
-        score: Object,
-        maxScore: Object,
+        score : Object,
     },
     components: {
         LangFlag,
     },
     methods: {
         convertScore(score) {
-        const maxScore = 5;
+            const maxScore = 5;
         const originalMaxScore = 10;
         return {
                 score: Math.ceil((score * maxScore) / originalMaxScore),

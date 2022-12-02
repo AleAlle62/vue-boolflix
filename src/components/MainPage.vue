@@ -4,11 +4,11 @@
             <!-- serie  -->
             <h1>SERIE TV</h1>
             <SerieCard 
-            :arr-serie =  " arrSerie "/>
+            :arr-serie =  " arrSerie "
+            :score="convertScore(arrSerie.vote_average)"/>
             <!-- film  -->
             <h1>FILM</h1>
-            <FilmCard :arr-movie = " arrMovie "
-            />
+            <FilmCard :arr-movie = " arrMovie"/>
         </div>
     </div>
 </template>
@@ -28,6 +28,16 @@ export default {
         arrSerie: Array,
         score: Object,
     },
+    methods: {
+        convertScore(score) {
+            const maxScore = 5;
+        const originalMaxScore = 10;
+        return {
+                score: Math.ceil((score * maxScore) / originalMaxScore),
+                maxScore,
+            };
+        },
+    }
 }
 </script>
 
