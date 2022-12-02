@@ -19,13 +19,26 @@
                     <div><lang-flag :iso="objSerie.original_language"/></div>
                 </div>
                 <!-- voto  -->
-                <div class="flex">
-                    <div class="descrizione">VOTO:</div>
+                <div class="" >
+                    <!-- <div class="descrizione">VOTO:</div> -->
+
                     <!-- stelline  -->
-                    <font-awesome-icon icon="fa-solid fa-star" :style= "{ color: 'yellow'} "/>
-                    <font-awesome-icon icon="fa-regular fa-star" :style= "{ color: 'yellow'} " />
-                    <div>{{ converteScore(objSerie.vote_average) + ' su 5' }}</div>
+                    <font-awesome-icon
+                    icon="fa-solid fa-star" 
+                    v-for= "i in score" 
+                    :key="i"
+                    :style= "{ color: 'yellow'} "/>
+
+
+                    <!-- stelline vuote  -->
+                    <font-awesome-icon 
+                    icon="fa-regular fa-star "
+                    v-for= "i in maxScore" 
+                    :key="i" 
+                    :style= "{ color: 'yellow'} " />
+                    <div>{{' su 5'}}</div>
                 </div>
+
                 <div class="flex">
                     <div class="descrizione">DESCRIZIONE:</div>
                 </div>
@@ -45,24 +58,20 @@ export default {
     props : {
         arrSerie: Array,
         score: Object,
+        maxScore: Object,
     },
     components: {
         LangFlag,
     },
     methods: {
-        // trasformazione dei voti da 10 a 5
-        converteScore(score){
-            // score : 10 = x : 5
-            // x = (score x 5)/10
-            // x = score x 0,5
-            // x = score / 2
-            let maxScore = 5;
-            let originalMaxscore = 10
-            return {
-                score : Math.ceil(score * maxScore / originalMaxscore),
-                maxScore :  maxScore,
-            }
-        }
+        convertScore(score) {
+        const maxScore = 5;
+        const originalMaxScore = 10;
+        return {
+                score: Math.ceil((score * maxScore) / originalMaxScore),
+                maxScore,
+            };
+        },
     }
 }
 </script>

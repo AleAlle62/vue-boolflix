@@ -7,7 +7,8 @@
             :arr-serie =  " arrSerie "/>
             <!-- film  -->
             <h1>FILM</h1>
-            <FilmCard :arr-movie = " arrMovie "/>
+            <FilmCard :arr-movie = " arrMovie "
+            />
         </div>
     </div>
 </template>
@@ -25,6 +26,7 @@ export default {
     props: {
         arrMovie: Array,
         arrSerie: Array,
+        score: Object,
     },
 }
 </script>
