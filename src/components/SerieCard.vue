@@ -1,32 +1,36 @@
 <template>
     <div class="container">
         <div class="card" 
-        v-for = "objSerie in arrSerie" :key = "objSerie.id"
-        v-show = " objSerie.poster_path ">
+        v-for = "objSerie in arrSerie" :key = "objSerie.id">
             <!-- stampa delle varie del film -->
-
-
             <!-- DAVANTI  -->
             <div class="back">
                 <div><img  :src = "`https://image.tmdb.org/t/p/w342${objSerie.poster_path}`"></div>
             </div>
-
             <!-- DIETRO  -->
             <div class="front">
                 <!-- titolo  -->
-                <div>{{ objSerie.name }}</div>
-                <!-- ittolo originale  -->
-                <div>{{ objSerie.original_title }}</div>
-                <!-- lingua con bandiera  -->
-                <lang-flag :iso="objSerie.original_language"/>
+                <div class="flex">
+                    <div class="descrizione">TITOLO:</div>
+                    <div>{{ objSerie.name }}</div>
+                </div>
+                <div class="flex">
+                    <div class="descrizione">LINGUA:</div>
+                    <div><lang-flag :iso="objSerie.original_language"/></div>
+                </div>
                 <!-- voto  -->
-                <div>{{ converteScore(objSerie.vote_average) }}</div>
-                <div class="view">{{ objSerie.overview }}</div>
-                <!-- <font-awesome-icon icon="fa-solid fa-star" /> -->
-                <!-- <font-awesome-icon icon="fa-solid fa-star" /> -->
+                <div class="flex">
+                    <div class="descrizione">VOTO:</div>
+                    <!-- stelline  -->
+                    <font-awesome-icon icon="fa-solid fa-star" :style= "{ color: 'yellow'} "/>
+                    <font-awesome-icon icon="fa-regular fa-star" :style= "{ color: 'yellow'} " />
+                    <div>{{ converteScore(objSerie.vote_average) + ' su 5' }}</div>
+                </div>
+                <div class="flex">
+                    <div class="descrizione">DESCRIZIONE:</div>
+                </div>
+                <div class="view">{{ objSerie.overview + '...' }}</div>
             </div>
-
-
         </div>
     </div>
 </template>
@@ -40,6 +44,7 @@ export default {
     name: 'SerieCard',
     props : {
         arrSerie: Array,
+        score: Object,
     },
     components: {
         LangFlag,
@@ -51,7 +56,12 @@ export default {
             // x = (score x 5)/10
             // x = score x 0,5
             // x = score / 2
-            return Math.ceil(score / 2) 
+            let maxScore = 5;
+            let originalMaxscore = 10
+            return {
+                score : Math.ceil(score * maxScore / originalMaxscore),
+                maxScore :  maxScore,
+            }
         }
     }
 }
@@ -61,14 +71,19 @@ export default {
 .container {
     display: flex;
     flex-wrap: wrap;
-    gap: 100px;
+    gap: 30px;
 }
 
 .card {
     perspective: 1000px;
-    height: 220px;
-    width: 220px;
+    height: 320px;
+    width: 250px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .card .back {
@@ -96,6 +111,24 @@ export default {
 }
 
 .view {
-    height: 20px;
+    width: 100%;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+img {
+    height: 310px;
+    width: 250px;
+    border-radius: 10px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.descrizione {
+    color: salmon;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 </style>

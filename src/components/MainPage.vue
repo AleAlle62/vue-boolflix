@@ -36,10 +36,6 @@ export default {
     color: white;
 }
 
-img {
-    height: 300px;
-    border-radius: 10px;
-}
 h1 {
     margin: 1em;
     color: white;

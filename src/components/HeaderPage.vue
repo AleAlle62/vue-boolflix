@@ -6,9 +6,9 @@
         <!-- per non refreshare la pagina  -->
         <form @submit.prevent = " $emit('queryChange', queryString) ">
             <!-- barra di ricerca  -->
-            <input type="text" placeholder="cerca..." v-model="queryString">
+            <input type="text" placeholder="cerca film o serie tv..." v-model="queryString">
             <!-- bottone di invio  -->
-            <button>cerca</button>
+            <button>search</button>
         </form>
     </div>
 </template>
@@ -43,5 +43,8 @@ button {
     background-color: red;
     border-radius: 10px;
     border: 1px solid white;
+}
+input {
+    border-radius: 10px;
 }
 </style>

@@ -78,7 +78,8 @@ export default {
 <style>
 
 html {
-  background-color: black;
+  background-image: url('https://wallpaper.dog/large/20518712.jpg');
+  object-fit: cover;
 }
 
 body {
