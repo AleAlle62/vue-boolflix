@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         convertScore(score) {
-            const maxScore = 5;
+        const maxScore = 5;
         const originalMaxScore = 10;
         return {
                 score: Math.ceil((score * maxScore) / originalMaxScore),
@@ -46,6 +46,7 @@ export default {
 .container {
     display: flex;
     color: white;
+    justify-content: center;
 }
 
 h1 {

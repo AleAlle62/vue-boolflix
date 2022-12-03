@@ -67,26 +67,6 @@ export default {
                     <div><lang-flag :iso="objMovie.original_language"/></div>
                 </div>
                 <!-- voto  -->
-                <div class="" >
-                    <!-- <div class="descrizione">VOTO:</div> -->
-
-                    <!-- stelline  -->
-                    <font-awesome-icon
-                    icon="fa-solid fa-star" 
-                    v-for= "i in score" 
-                    :key="i"
-                    :style= "{ color: 'yellow'} "/>
-
-
-                    <!-- stelline vuote  -->
-                    <font-awesome-icon 
-                    icon="fa-regular fa-star "
-                    v-for= "i in maxScore" 
-                    :key="i" 
-                    :style= "{ color: 'yellow'} " />
-                    <div>{{' su 5'}}</div>
-                </div>
-
                 <div class="flex">
                     <div class="descrizione">DESCRIZIONE:</div>
                 </div>

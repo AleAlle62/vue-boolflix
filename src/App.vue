@@ -13,9 +13,9 @@
 // axios 
 import axios from 'axios';
 // header 
-import HeaderPage from '@/components/HeaderPage.vue';
+import HeaderPage from '@/components/HeaderPage.vue'
 // main 
-import MainPage from '@/components/MainPage.vue';
+import MainPage from '@/components/MainPage.vue'
 
 export default {
     name: 'App',

@@ -19,26 +19,6 @@
                     <div><lang-flag :iso="objSerie.original_language"/></div>
                 </div>
                 <!-- voto  -->
-                <div class="" >
-                    <!-- <div class="descrizione">VOTO:</div> -->
-                    <div>{{objSerie.vote_average}}</div>
-                    <!-- stelline  -->
-                    <font-awesome-icon
-                    icon="fa-solid fa-star" 
-                    v-for= "i in score" 
-                    :key="i"
-                    />
-
-                    <!-- v-for= "i in (score.maxScore - score.score)"  -->
-
-                    <!-- stelline vuote  -->
-                    <!-- <font-awesome-icon 
-                    icon="fa-regular fa-star "
-
-                    :style= "{ color: 'yellow'} " />
-                    <div>{{' su 5'}}</div> -->
-                </div>
-
                 <div class="flex">
                     <div class="descrizione">DESCRIZIONE:</div>
                 </div>
@@ -58,13 +38,14 @@ export default {
     props : {
         arrSerie: Array,
         score : Object,
+        maxScore : Number,
     },
     components: {
         LangFlag,
     },
     methods: {
         convertScore(score) {
-            const maxScore = 5;
+        const maxScore = 5;
         const originalMaxScore = 10;
         return {
                 score: Math.ceil((score * maxScore) / originalMaxScore),
